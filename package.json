@@ -1,0 +1,24 @@
+{
+  "name": "yog",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiangshouding/yog.git"
+  },
+  "keywords": [
+    "fis",
+    "node",
+    "yog"
+  ],
+  "author": "fansekey",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/xiangshouding/yog/issues"
+  },
+  "homepage": "https://github.com/xiangshouding/yog"
+}
