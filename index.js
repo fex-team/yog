@@ -1,1 +1,4 @@
-module.exports = require('kraken-js');
+var yog = require('kraken-js');
+
+
+module.exports = yog;

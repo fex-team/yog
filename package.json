@@ -1,6 +1,6 @@
 {
   "name": "yog",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "yog"
   ],
   "dependencies": {
-    "karken-js": "1.0.1"
+    "kraken-js": "1.0.1"
   },
   "author": "fansekey",
   "license": "BSD",
