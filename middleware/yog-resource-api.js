@@ -56,9 +56,6 @@ ResourceApi.prototype = {
     load: function(id, async) {
         var that = this;
         if (this.loaded[id] && !this.async[id]) {
-            if (this.async[id]) {
-                this.asyncToSync(id);
-            }
             return this.loaded[id];
         } else {
             var ns = this.getNS(id);
