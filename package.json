@@ -1,6 +1,6 @@
 {
   "name": "yog",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,6 +15,9 @@
     "node",
     "yog"
   ],
+  "peerDependencies": {
+    "express": "^4.0.0"
+  },
   "dependencies": {
     "kraken-js": "1.0.1"
   },
