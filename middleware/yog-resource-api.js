@@ -3,7 +3,7 @@
  */
 
 var fs = require('fs');
-var log = requrie('yog-log');
+var log = require('yog-log');
 
 function ResourceApi(config_dir) {
     this.config_dir = config_dir;
@@ -127,7 +127,10 @@ module.exports = function (options) {
     options = options || {};
     var config_dir = options['config_dir']
     return function (req, res, next) {
-        res.fis = new ResourceApi(config_idr);
+        res.fis = new ResourceApi(config_dir);
         next();
     };
 };
+
+//exports function
+module.exports.ResourceApi = ResourceApi;
