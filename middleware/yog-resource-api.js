@@ -73,6 +73,9 @@ ResourceApi.prototype = {
     },
 
     load: function(id, async) {
+        //@TODO
+        if (!id) return '';
+
         var that = this;
         if (this.loaded[id] && !this.async[id]) {
             return this.loaded[id];
@@ -126,6 +129,9 @@ ResourceApi.prototype = {
     },
 
     getUri: function (id) {
+        //@TODO
+        if (!id) return '';
+
         var resInfo = this.getUriInfo(id);
         if (resInfo) {
             return resInfo['uri'];
@@ -157,17 +163,25 @@ ResourceApi.prototype = {
             }
 
             js += '<script src="' + this.sync['js'].join('"></script>\n<script src="') + '"></script>';
-            js += '\n<script type="text/javascript">\n!function() {' + this.scripts.join('}();\n!function() {') + '}();</script>\n';
-            html = html.replace(this.JS_HOOK, js)
         }
+
+        if (this.scripts.length > 0) {
+            js += '\n<script type="text/javascript">\n!function() {' + this.scripts.join('}();\n!function() {') + '}();</script>\n';
+        }
+
+        html = html.replace(this.JS_HOOK, js)
+
 
         if (this.sync['css']) {
             css += '<link rel="stylesheet" href="' + this.sync['css'].join(' />\n<link rel="stylesheet" href="') + ' />';
-            css += '\n<style type="text/css">' + this.styles.join('\n') + '</style>';
-            html = html.replace(this.CSS_HOOK, css);
         }
-        html = html.replace(this.JS_HOOK, '').replace(this.CSS_HOOK, '');
 
+        if (this.styles.length > 0) {
+            css += '\n<style type="text/css">' + this.styles.join('\n') + '</style>';
+        }
+
+        html = html.replace(this.CSS_HOOK, css);
+        
         return html;
     }
 };

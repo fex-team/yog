@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "kraken-js": "1.0.1",
-    "yog-log": "~0.0.1"
+    "yog-log": "~0.0.1",
+    "yog-swig": "~0.0.1"
   },
   "author": "fansekey",
   "license": "BSD",
