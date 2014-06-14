@@ -10,16 +10,35 @@ function ResourceApi(config_dir) {
     this.loaded = {};
     
     //public
+    // include all async files
     this.async = {};
-
-    //public
+    // include all sync files
     this.sync = {};
+    //mark `mod.js`, mod.js ahead everything.
+    this.framework = '';
+
+    //collect all inner script
+    this.scripts = [];
+
+    //collect all inner style
+    this.styles = [];
 
     this.maps = {};
     this.asyncDeleted = [];
+
+    this.CSS_HOOK = '<!--FIS_CSS_HOOK-->';
+    this.JS_HOOK = '<!--FIS_JS_HOOK-->';
 }
 
 ResourceApi.prototype = {
+    addScript: function (script) {
+        this.scripts.push(script);
+    },
+
+    addStyle: function (style) {
+        this.styles.push(style);
+    },
+
     register: function (ns) {
         var map_json = this.config_dir;
         if (ns == '__global__') {
@@ -65,7 +84,6 @@ ResourceApi.prototype = {
                 var uri = '';
                 if (resInfo) {
                     var type = resInfo['type'];
-
                     if (resInfo['pkg']) {
                         var pkgInfo = map['pkg'][resInfo['pkg']];
                         uri = pkgInfo['uri'];
@@ -85,7 +103,8 @@ ResourceApi.prototype = {
                         this.loadDeps(resInfo, async);
                     }
 
-                    if (!async) {
+                    //only the javascript file maybe is a async file.
+                    if (!async || type == 'css') {
                         this.sync[type] = this.sync[type] || [];
                         this.sync[type].push(uri);
                     } else {
@@ -100,8 +119,9 @@ ResourceApi.prototype = {
     },
     getUriInfo: function (id) {
         var ns = this.getNS(id);
-        if (this.map[ns] || this.register(ns)) {
-            return this.maps[ns][id];
+
+        if (this.maps[ns] || this.register(ns)) {
+            return this.maps[ns]['res'][id];
         }
     },
 
@@ -120,6 +140,35 @@ ResourceApi.prototype = {
         } else {
             return '__global__';
         }
+    },
+
+    render: function (html) {
+        var js = '';
+        var css = '';
+        var p;
+
+        if (this.sync['js']) {
+            if (this.framework) {
+                js += '<script src="' + this.framework + '"></script>';
+            }
+            
+            if ((p = this.sync['js'].indexOf(this.framework)) != -1) {
+                this.sync['js'].splice(p, 1); //remove `mod.js`
+            }
+
+            js += '<script src="' + this.sync['js'].join('"></script>\n<script src="') + '"></script>';
+            js += '\n<script type="text/javascript">\n!function() {' + this.scripts.join('}();\n!function() {') + '}();</script>\n';
+            html = html.replace(this.JS_HOOK, js)
+        }
+
+        if (this.sync['css']) {
+            css += '<link rel="stylesheet" href="' + this.sync['css'].join(' />\n<link rel="stylesheet" href="') + ' />';
+            css += '\n<style type="text/css">' + this.styles.join('\n') + '</style>';
+            html = html.replace(this.CSS_HOOK, css);
+        }
+        html = html.replace(this.JS_HOOK, '').replace(this.CSS_HOOK, '');
+
+        return html;
     }
 };
 
