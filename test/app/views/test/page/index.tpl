@@ -9,7 +9,8 @@
     {%endhead%}
     {%body%}
         <p>
-            hello fis!
+            <h1> hello fis! </h1>
         </p>
+        {%widget "test:widget/widget0.tpl" with widget0_obj%}
     {%endbody%}
 {%endhtml%}

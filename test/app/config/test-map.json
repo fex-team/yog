@@ -1,0 +1,8 @@
+{
+    "res": {
+        "test:widget/widget0.tpl": {
+            "uri": "test/widget/widget0.tpl",
+            "type": "tpl"
+        }
+    }
+}
