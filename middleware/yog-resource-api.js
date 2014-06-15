@@ -47,8 +47,21 @@ ResourceApi.prototype = {
             map_json += '/' + ns + '-map.json';
         }
 
-        if (fs.statSync(map_json).isFile()) {
-            this.maps[ns] = JSON.parse(fs.readFileSync(map_json));
+        var stat;
+        try {
+            stat = fs.statSync(map_json);
+        } catch(e) {
+            log.error(e);
+            return false;
+        }
+
+        if (stat && stat.isFile()) {
+            try {
+                this.maps[ns] = JSON.parse(fs.readFileSync(map_json));
+            } catch (e) {
+                log.error(e);
+                return false;
+            }
         } else {
             return false;
         }
@@ -113,10 +126,13 @@ ResourceApi.prototype = {
                     } else {
                         this.async[id] = resInfo;
                     }
+
                     return uri;
+                } else {
+                    log.warning('not found resource, resource `id` = ' + id);
                 }
             } else {
-                log.warning('can\'t found ' + ns + '-map.json');
+                log.warning('can\'t found `' + ns + '-map.json`');
             }
         }
     },
@@ -191,6 +207,7 @@ module.exports = function (options) {
     var config_dir = options['config_dir']
     return function (req, res, next) {
         res.fis = new ResourceApi(config_dir);
+        res.ResourceApi = ResourceApi;
         next();
     };
 };
