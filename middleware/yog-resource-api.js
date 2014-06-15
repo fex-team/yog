@@ -31,14 +31,27 @@ function ResourceApi(config_dir) {
 }
 
 ResourceApi.prototype = {
+    /**
+     * collect all inner js.
+     * @param script  the code between <script> and </script>.
+     */
     addScript: function (script) {
         this.scripts.push(script);
     },
 
+    /**
+     * collect all inner css
+     * @param style  the code between <style> and </style>
+     */
     addStyle: function (style) {
         this.styles.push(style);
     },
 
+    /**
+     * register a `map.json`
+     * @param ns  namespace
+     * @returns {boolean}
+     */
     register: function (ns) {
         var map_json = this.config_dir;
         if (ns == '__global__') {
@@ -170,6 +183,7 @@ ResourceApi.prototype = {
         var p;
 
         if (this.sync['js']) {
+            //if need `mod.js`, keep it first.
             if (this.framework) {
                 js += '<script src="' + this.framework + '"></script>';
             }
