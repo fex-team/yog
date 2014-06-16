@@ -222,11 +222,11 @@ ResourceApi.prototype = {
         var js = '';
         var css = '';
         var p;
-
-        if (this.sync['js'] || this.getResourceMap()) {
+        var loadModjs = (this.sync['js'] || this.getResourceMap()) && this.framework;
+        if (loadModjs) {
             //if need `mod.js`, keep it first.
-            if (this.framework) {
-                js += '<script src="' + this.framework + '"></script>';
+            js += '<script src="' + this.framework + '"></script>';
+            if (this.getResourceMap()) {
                 js += '<script>require.resourceMap(' + JSON.stringify(this.getResourceMap()) + ');</script>';
             }
         }
