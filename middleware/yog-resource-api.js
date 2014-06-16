@@ -149,19 +149,26 @@ ResourceApi.prototype = {
             }
         }
     },
-    getUriInfo: function (id) {
+
+    getResInfo: function (id) {
         var ns = this.getNS(id);
+        var info;
 
         if (this.maps[ns] || this.register(ns)) {
-            return this.maps[ns]['res'][id];
+            info = this.maps[ns]['res'][id];
+            if (info['pkg']) {
+                info = this.maps[ns]['pkg'][info['pkg']];
+            }
         }
+
+        return info;
     },
 
     getUri: function (id) {
         //@TODO
         if (!id) return '';
 
-        var resInfo = this.getUriInfo(id);
+        var resInfo = this.getResInfo(id);
         if (resInfo) {
             return resInfo['uri'];
         }
@@ -177,17 +184,54 @@ ResourceApi.prototype = {
         }
     },
 
+    getResourceMap: function () {
+        var id;
+        var rMap;
+        var pkg = {};
+
+        for (id in this.async) {
+            var res = this.async[id];
+
+            if (res['type'] != 'js') {
+                continue;
+            }
+            rMap = rMap || {};
+            rMap['res'] = rMap['res'] || {};
+            rMap['pkg'] = rMap['pkg'] || {};
+
+            rMap['res'][id] = {
+                'url': res['uri'],
+                'deps': res['deps'] || [],
+            }
+
+            if (res['pkg']) {
+                rMap['res'][id]['pkg'] = res['pkg'];
+            }
+
+            if (this.async[id]['pkg']) {
+                pkg = this.getResInfo(id);
+                rMap['pkg'][this.async[id]['pkg']] = {
+                    'url': pkg['uri']
+                }
+            }
+        }
+        return rMap;
+    },
+
     render: function (html) {
         var js = '';
         var css = '';
         var p;
 
-        if (this.sync['js']) {
+        if (this.sync['js'] || this.getResourceMap()) {
             //if need `mod.js`, keep it first.
             if (this.framework) {
                 js += '<script src="' + this.framework + '"></script>';
+                js += '<script>require.resourceMap(' + JSON.stringify(this.getResourceMap()) + ');</script>';
             }
+        }
 
+        if (this.sync['js']) {
             if ((p = this.sync['js'].indexOf(this.framework)) != -1) {
                 this.sync['js'].splice(p, 1); //remove `mod.js`
             }

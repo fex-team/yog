@@ -1,0 +1,27 @@
+{
+    "res": {
+        "test:static/a.js": {
+            "uri": "/static/test/a.js",
+            "type": "js",
+            "pkg": "p0",
+            "extras": {
+                "async": [
+                    "test:static/a_async.js"
+                ]
+            }
+        },
+        "test:static/a_async.js": {
+            "uri": "/static/test/a_async.js",
+            "type": "js"
+        }
+    },
+    "pkg": {
+        "p0": {
+            "uri": "/static/test/pkg/pkg_0.js",
+            "type": "js",
+            "has": [
+                "test:static/a.js"
+            ]
+        }
+    }
+}
