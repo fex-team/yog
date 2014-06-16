@@ -21,7 +21,10 @@
   "dependencies": {
     "kraken-js": "1.0.1",
     "yog-log": "~0.0.1",
-    "yog-swig": "~0.0.1"
+    "yog-swig": "~0.0.1",
+    "confit": "~1.1.2",
+    "caller": "0.0.1",
+    "shortstop-handlers": "~1.0.0"
   },
   "author": "fansekey",
   "license": "BSD",

@@ -1,0 +1,39 @@
+{
+    "middleware": {
+        "router": {
+            "module": {
+                "arguments": [
+                    {
+                        "index": "path:./controllers"
+                    }
+                ]
+            }
+        },
+
+        "yogResourceApi": {
+            "enabled": true,
+            "priority": 70,
+            "module": {
+                "name": "yog/middleware/yog-resource-api",
+                "arguments": [
+                    {
+                        "config_dir": "path:./config"
+                    }
+                ]
+            }
+        },
+
+        "yogSwig": {
+            "enabled": true,
+            "priority": 75,
+            "module": {
+                "name": "yog/middleware/yog-swig",
+                "arguments": [
+                    {
+                        "viewdir": "path:./views"
+                    }
+                ]
+            }
+        }
+    }
+}

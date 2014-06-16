@@ -8,7 +8,7 @@ var log = require('yog-log');
 function ResourceApi(config_dir) {
     this.config_dir = config_dir;
     this.loaded = {};
-    
+
     //public
     // include all async files
     this.async = {};
@@ -81,7 +81,7 @@ ResourceApi.prototype = {
         return true;
 
     },
-    
+
     loadDeps: function (res, async) {
         var that = this;
         if (res['deps']) {
@@ -187,7 +187,7 @@ ResourceApi.prototype = {
             if (this.framework) {
                 js += '<script src="' + this.framework + '"></script>';
             }
-            
+
             if ((p = this.sync['js'].indexOf(this.framework)) != -1) {
                 this.sync['js'].splice(p, 1); //remove `mod.js`
             }
@@ -211,7 +211,7 @@ ResourceApi.prototype = {
         }
 
         html = html.replace(this.CSS_HOOK, css);
-        
+
         return html;
     }
 };
