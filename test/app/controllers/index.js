@@ -5,5 +5,9 @@ module.exports = function (router) {
                 title: "HELLO, i'm a widget!"
             }
         });
-    })
+    });
+
+    router.get('/pagelet', function (req, res) {
+        res.render('test/page/pagelet.tpl');
+    });
 };
