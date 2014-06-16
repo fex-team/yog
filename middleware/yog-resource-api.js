@@ -247,7 +247,7 @@ ResourceApi.prototype = {
 
 
         if (this.sync['css']) {
-            css += '<link rel="stylesheet" href="' + this.sync['css'].join(' />\n<link rel="stylesheet" href="') + ' />';
+            css += '<link rel="stylesheet" href="' + this.sync['css'].join('" />\n<link rel="stylesheet" href="') + '" />';
         }
 
         if (this.styles.length > 0) {
