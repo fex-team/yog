@@ -1,5 +1,6 @@
 yog
 ===
+An kraken-js (express-based) Node.js web application bootstrapping module.
 
 ### install
 
@@ -37,18 +38,14 @@ var app = require('express')();
 var path = require('path');
 var PORT = 4000;
 
-app.use(yog({
-    basedir: __dirname,
-    viewdir: path.join(__dirname, 'views');
-})).listen(PORT, function () {
+app.use(yog()).listen(PORT, function () {
     console.log('Listening *:' + PORT);
 });
 ```
 
 detail see directory `test/app`
 
-### others
-
+### ](https://github.com/krakenjs/kraken-js)
 + [swig](https://github.com/paularmstrong/swig/)
 + [yog-swig](https://github.com/fex-team/yog-swig)
 + [yog-log](https://github.com/fex-team/yog-log)
