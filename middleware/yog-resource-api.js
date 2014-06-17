@@ -24,7 +24,7 @@ function ResourceApi(config_dir) {
     this.styles = [];
 
     this.maps = {};
-    this.asyncDeleted = [];
+    this.asyncToSync = {};
 
     this.CSS_HOOK = '<!--FIS_CSS_HOOK-->';
     this.JS_HOOK = '<!--FIS_JS_HOOK-->';
@@ -86,7 +86,7 @@ ResourceApi.prototype = {
         var that = this;
         if (res['deps']) {
             res['deps'].forEach(function (id) {
-                that.load(id, false);
+                that.load(id, async);
             });
         }
 
@@ -103,7 +103,13 @@ ResourceApi.prototype = {
         if (!id) return '';
 
         var that = this;
-        if (this.loaded[id] && !this.async[id]) {
+        if (this.loaded[id]) {
+            if (!async && this.async[id] && !this.asyncToSync[id]) {
+                var info = this.async[id];
+                this.loadDeps(info, async);
+                this.sync[info['type']].push(info['uri']);
+                this.asyncToSync[id] = info['uri'];
+            }
             return this.loaded[id];
         } else {
             var ns = this.getNS(id);
