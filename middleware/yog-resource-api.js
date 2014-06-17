@@ -107,6 +107,7 @@ ResourceApi.prototype = {
             if (!async && this.async[id] && !this.asyncToSync[id]) {
                 var info = this.async[id];
                 this.loadDeps(info, async);
+                this.sync[info['type']] = this.sync[info['type']] || [];
                 this.sync[info['type']].push(info['uri']);
                 this.asyncToSync[id] = info['uri'];
             }
