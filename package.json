@@ -1,6 +1,6 @@
 {
   "name": "yog",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -26,8 +26,8 @@
     "kraken-js": "1.0.1",
     "yog-log": "~0.0.1",
     "yog-bigpipe": "~0.0.1",
-    "yog-view": "0.0.1",
-    "confit": "~1.1.2",
+    "yog-view": "~0.0.3",
+    "confit": "1.1.2",
     "caller": "0.0.1",
     "shortstop-handlers": "~1.0.0"
   },
