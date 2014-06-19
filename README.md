@@ -35,7 +35,6 @@ _app.js_
 ```javascript
 var yog = require('yog');
 var app = require('express')();
-var path = require('path');
 var PORT = 4000;
 
 app.use(yog()).listen(PORT, function () {
@@ -43,11 +42,13 @@ app.use(yog()).listen(PORT, function () {
 });
 ```
 
-detail see directory `test/app`
+detail see project [fex-team/yog-app](https://github.com/fex-team/yog-app)
 
 ### others
 
 + [kraken-js](https://github.com/krakenjs/kraken-js)
 + [swig](https://github.com/paularmstrong/swig/)
++ [yog-view](https://github.com/fex-team/yog-view)
++ [yog-bigpipe](https://github.com/fex-team/yog-bigpipe)
 + [yog-swig](https://github.com/fex-team/yog-swig)
 + [yog-log](https://github.com/fex-team/yog-log)
