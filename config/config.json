@@ -1,18 +1,24 @@
 {
-    "middleware": {
-        "router": {
-            "module": {
+    "view engines": {
+        "tpl": {
+            "module": "yog-view",
+            "renderer": {
+                "method": "create",
                 "arguments": [
                     {
-                        "index": "path:./controllers"
+                        "cache": false,
+                        "engine": "swig"
                     }
                 ]
             }
-        },
+        }
+    },
+
+    "middleware": {
 
         "yogResourceApi": {
             "enabled": true,
-            "priority": 70,
+            "priority": 110,
             "module": {
                 "name": "yog/middleware/yog-resource-api",
                 "arguments": [
@@ -23,14 +29,40 @@
             }
         },
 
-        "yogSwig": {
+
+        "yogBigPipe": {
             "enabled": true,
-            "priority": 75,
+            "priority": 120,
             "module": {
-                "name": "yog/middleware/yog-swig",
+                "name": "yog-bigpipe",
                 "arguments": [
                     {
-                        "viewdir": "path:./views"
+                        // config
+                    }
+                ]
+            }
+        },
+
+        "yogView": {
+            "enabled": true,
+            "priority": 130,
+            "module": {
+                "name": "yog-view",
+                "arguments": [
+                    {
+                        // config
+                    }
+                ]
+            }
+        },
+
+
+        "router": {
+            "priority": 200,
+            "module": {
+                "arguments": [
+                    {
+                        "index": "path:./controllers"
                     }
                 ]
             }

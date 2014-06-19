@@ -257,12 +257,27 @@ ResourceApi.prototype = {
         html = html.replace(this.CSS_HOOK, css);
 
         return html;
+    },
+
+    filter: function(content) {
+        if (~content.indexOf(this.JS_HOOK) || ~content.indexOf(this.CSS_HOOK)) {
+            content = this.render(content);
+        }
+
+        return content;
+    },
+
+    fork: function() {
+        newone =  new ResourceApi(this.config_dir);
+        newone.parent = this;
+        return newone;
     }
 };
 
 module.exports = function (options) {
     options = options || {};
-    var config_dir = options['config_dir']
+    var config_dir = options['config_dir'];
+
     return function (req, res, next) {
         res.fis = new ResourceApi(config_dir);
         res.ResourceApi = ResourceApi;

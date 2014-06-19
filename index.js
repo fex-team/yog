@@ -4,20 +4,29 @@ var path = require('path');
 var caller = require('caller');
 
 module.exports = function (options) {
+    var app;
 
     options = options || {};
 
     options.basedir = options.basedir || path.dirname(caller());
 
+    options.onconfig = options.onconfig || function(conf, done) {
+        var engines = conf.get('view engines');
+
+        Object.keys(engines).forEach(function(ext) {
+            engines[ext].renderer.arguments.push(app);
+        });
+
+        done( null, conf);
+    };
+
     // 插入 config 读取，让整体 config 的读取顺序如下：
     // - kranken-js/config/
     // - yog/config/
     // - app/config/
-    if (__dirname !== options.basedir) {
-        config(options);
-    }
+    config(options);
 
-    var app = kraken(options);
+    app = kraken(options);
 
     return app;
 };
