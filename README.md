@@ -42,7 +42,7 @@ app.use(yog()).listen(PORT, function () {
 });
 ```
 
-detail see directory `fex-team/yog-app`
+detail see project [fex-team/yog-app](/fex-team/yog-app)
 
 ### others
 
