@@ -18,6 +18,10 @@
   "peerDependencies": {
     "express": "^4.0.0"
   },
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*"
+  },
   "dependencies": {
     "kraken-js": "1.0.1",
     "yog-log": "~0.0.1",

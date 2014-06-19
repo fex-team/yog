@@ -1,18 +1,54 @@
 {
     "res": {
-        "test:static/a.js": {
-            "uri": "/static/test/a.js",
+        "test:static/not-have-deps.js": {
+            "uri": "/static/test/not-have-deps.js",
+            "type": "js"
+        },
+        "test:static/have-js-deps.js": {
+            "uri": "/static/test/have-js-deps.js",
             "type": "js",
-            "pkg": "p0",
+            "deps": [
+                "test:static/deps_01.js"
+            ]
+        },
+        "test:static/deps_01.js": {
+            "uri": "/static/test/deps_01.js",
+            "type": "js"
+        },
+        "test:static/have-css-deps.js": {
+            "uri": "/static/test/have-css-deps.js",
+            "type": "js",
+            "deps": [
+                "test:static/deps_01.css"
+            ]
+        },
+        "test:static/have-async.js": {
+            "uri": "/static/test/have-async.js",
+            "type": "js",
             "extras": {
                 "async": [
-                    "test:static/a_async.js"
+                    "test:static/async_01.js"
                 ]
             }
         },
-        "test:static/a_async.js": {
-            "uri": "/static/test/a_async.js",
+        "test:static/async_01.js": {
+            "uri": "/static/test/async_01.js",
             "type": "js"
+        },
+        "test:static/not-have-deps.css": {
+            "uri": "/static/test/not-have-deps.css",
+            "type": "css"
+        },
+        "test:static/have-deps.css": {
+            "uri": "/static/test/have-deps.css",
+            "type": "css",
+            "deps": [
+                "test:static/deps_01.css"
+            ]
+        },
+        "test:static/deps_01.css": {
+            "uri": "/static/test/deps_01.css",
+            "type": "css"
         }
     },
     "pkg": {
