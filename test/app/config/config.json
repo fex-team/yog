@@ -1,9 +1,0 @@
-{
-    "middleware": {
-        "router": {
-            "module": {
-                "arguments": [{ "directory": "path:./controllers" }]
-            }
-        }
-    }
-}
