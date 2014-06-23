@@ -3,7 +3,7 @@
  */
 
 var fs = require('fs');
-var log = require('yog-log');
+var log = require('yog-log').getLogger();
 
 function ResourceApi(config_dir) {
     this.config_dir = config_dir;
@@ -64,7 +64,7 @@ ResourceApi.prototype = {
         try {
             stat = fs.statSync(map_json);
         } catch(e) {
-            log.error(e);
+            log.fatal(e);
             return false;
         }
 
@@ -72,7 +72,7 @@ ResourceApi.prototype = {
             try {
                 this.maps[ns] = JSON.parse(fs.readFileSync(map_json));
             } catch (e) {
-                log.error(e);
+                log.fatal(e);
                 return false;
             }
         } else {
