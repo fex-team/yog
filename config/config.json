@@ -15,13 +15,19 @@
     },
 
     "middleware": {
+        
         "logger": {
+            "enabled": false
+        },
+
+        "yogLogger": {
             "enabled": true,
             "priority": 50,
             "module": {
                 "name": "yog-log",
                 "arguments": [
                     {
+                        "app": "yog-app",
                         "data_path": "path:./data",
                         "log_path": "path:./data/log",
                         "access_log_path": "path:./data/access",
