@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "kraken-js": "1.0.1",
-    "yog-log": "~0.0.1",
+    "yog-log": "0.0.3",
     "yog-bigpipe": "~0.0.1",
     "yog-view": "~0.0.3",
     "confit": "1.1.2",

@@ -15,7 +15,22 @@
     },
 
     "middleware": {
-
+        "logger": {
+            "enabled": true,
+            "priority": 50,
+            "module": {
+                "name": "yog-log",
+                "arguments": [
+                    {
+                        "data_path": "path:./data",
+                        "log_path": "path:./data/log",
+                        "access_log_path": "path:./data/access",
+                        "access_error_log_path": "path:./data/access"
+                    }
+                ]
+            }
+        },
+        
         "yogResourceApi": {
             "enabled": true,
             "priority": 110,
@@ -55,7 +70,6 @@
                 ]
             }
         },
-
 
         "router": {
             "priority": 200,
