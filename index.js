@@ -27,6 +27,10 @@ module.exports = function (options) {
     config(options);
 
     app = kraken(options);
-
+    app.on('mount', function(parent) {
+        parent.on('start', function() {
+            parent.yog = parent.kraken;
+        });
+    });
     return app;
 };
