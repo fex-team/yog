@@ -15,6 +15,16 @@
     },
 
     "middleware": {
+
+        "urlencoded": {
+            "module": {
+                "arguments": [
+                    {
+                        "extended": true
+                    }
+                ]
+            }
+        },
         
         "logger": {
             "enabled": false

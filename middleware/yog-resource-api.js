@@ -274,9 +274,12 @@ ResourceApi.prototype = {
         return content;
     },
 
+    destroy: function() {
+        // todo
+    },
+
     fork: function() {
-        newone =  new ResourceApi(this.config_dir);
-        newone.parent = this;
+        var newone =  new ResourceApi(this.config_dir);
         return newone;
     }
 };
@@ -286,9 +289,23 @@ module.exports = function (options) {
     var config_dir = options['config_dir'];
 
     return function (req, res, next) {
+        var destroy;
+
         log = require('yog-log').getLogger(); //@TODO
         res.fis = new ResourceApi(config_dir);
         res.ResourceApi = ResourceApi;
+
+        destroy = function() {
+            res.removeListener('finish', destroy);
+            res.removeListener('close', destroy);
+
+            res.fis.destroy();
+            res.fis = res.ResourceApi = null;
+        };
+
+        res.on('finish', destroy);
+        res.on('close', destroy);
+
         next();
     };
 };
