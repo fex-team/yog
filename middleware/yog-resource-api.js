@@ -75,7 +75,9 @@ ResourceApi.prototype.lazyload = function (ns) {
     try {
         stat = fs.statSync(map_json);
     } catch(e) {
-        log.fatal(e);
+        log.log('fatal', {
+            stack: e
+        });
         return false;
     }
 
@@ -83,7 +85,9 @@ ResourceApi.prototype.lazyload = function (ns) {
         try {
             this.maps[ns] = JSON.parse(fs.readFileSync(map_json));
         } catch (e) {
-            log.fatal(e);
+            log.log('fatal', {
+                stack: e
+            });
             return false;
         }
     } else {
@@ -112,14 +116,14 @@ module.exports = function (options) {
 
         destroy = function() {
             res.removeListener('finish', destroy);
-            res.removeListener('close', destroy);
+            //res.removeListener('close', destroy);
 
             cache && res.fis.destroy();
             res.fis = null;
         };
 
         res.on('finish', destroy);
-        res.on('close', destroy);
+        //res.on('close', destroy);
 
         next();
     };
