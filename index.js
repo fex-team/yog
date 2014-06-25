@@ -4,7 +4,7 @@ var path = require('path');
 var caller = require('caller');
 
 module.exports = function (options) {
-    var app;
+    var rootapp, app;
 
     options = options || {};
 
@@ -14,9 +14,9 @@ module.exports = function (options) {
         var engines = conf.get('view engines');
 
         Object.keys(engines).forEach(function(ext) {
-            engines[ext].renderer.arguments.push(app);
+            engines[ext].renderer.arguments.push(rootapp);
         });
-
+        rootapp = null;
         done( null, conf);
     };
 
@@ -28,6 +28,8 @@ module.exports = function (options) {
 
     app = kraken(options);
     app.on('mount', function(parent) {
+        rootapp = parent;
+
         parent.on('start', function() {
             parent.yog = parent.kraken;
         });

@@ -74,19 +74,6 @@
             }
         },
 
-        "yogView": {
-            "enabled": true,
-            "priority": 130,
-            "module": {
-                "name": "yog-view",
-                "arguments": [
-                    {
-                        // config
-                    }
-                ]
-            }
-        },
-
         "router": {
             "priority": 200,
             "module": {
