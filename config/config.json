@@ -25,6 +25,28 @@
                 ]
             }
         },
+
+        "session": {
+            // "enabled": true,
+            // "priority": 100,
+            "module": {
+                // "name": "express-session",
+                "arguments": [
+                    {
+                        "key": "",
+                        "secret": "keyboard cat",
+                        "cookie": {
+                            "path": "/",
+                            "httpOnly": true,
+                            "maxAge": null
+                        },
+                        "proxy": null,
+                        "resave": true,
+                        "saveUninitialized": true
+                    }
+                ]
+            }
+        },
         
         "logger": {
             "enabled": false
