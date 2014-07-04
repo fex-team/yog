@@ -1,62 +1,21 @@
 {
     "res": {
-        "test:static/not-have-deps.js": {
-            "uri": "/static/test/not-have-deps.js",
-            "type": "js"
-        },
-        "test:static/have-js-deps.js": {
-            "uri": "/static/test/have-js-deps.js",
-            "type": "js",
-            "deps": [
-                "test:static/deps_01.js"
-            ]
-        },
-        "test:static/deps_01.js": {
-            "uri": "/static/test/deps_01.js",
-            "type": "js"
-        },
-        "test:static/have-css-deps.js": {
-            "uri": "/static/test/have-css-deps.js",
-            "type": "js",
-            "deps": [
-                "test:static/deps_01.css"
-            ]
-        },
-        "test:static/have-async.js": {
-            "uri": "/static/test/have-async.js",
-            "type": "js",
-            "extras": {
-                "async": [
-                    "test:static/async_01.js"
-                ]
-            }
-        },
-        "test:static/async_01.js": {
-            "uri": "/static/test/async_01.js",
-            "type": "js"
-        },
         "test:static/not-have-deps.css": {
             "uri": "/static/test/not-have-deps.css",
             "type": "css"
         },
-        "test:static/have-deps.css": {
-            "uri": "/static/test/have-deps.css",
+        "test:static/has-pkg.css": {
+            "uri": "test:static/has-pkg.css",
             "type": "css",
-            "deps": [
-                "test:static/deps_01.css"
-            ]
-        },
-        "test:static/deps_01.css": {
-            "uri": "/static/test/deps_01.css",
-            "type": "css"
+            "pkg": "p0"
         }
     },
     "pkg": {
         "p0": {
-            "uri": "/static/test/pkg/pkg_0.js",
-            "type": "js",
+            "uri": "/static/test/pkg/pkg_0.css",
+            "type": "css",
             "has": [
-                "test:static/a.js"
+                "test:static/has-pkg.css"
             ]
         }
     }

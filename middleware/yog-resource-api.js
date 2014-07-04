@@ -128,3 +128,5 @@ module.exports = function (options) {
         next();
     };
 };
+
+module.exports.ResourceApi = ResourceApi;
