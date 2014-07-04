@@ -35,4 +35,13 @@ describe('ResouceApi', function () {
             })
         });
     });
+
+    describe('ResourceApi.lazyload', function() {
+        it('load test-map.json', function () {
+            var r = new rApi.ResourceApi(config_dir);
+            var ret = r.lazyload('test');
+            expect(ret).to.equal(true);
+            expect(r.maps).to.have.property('test');
+        });
+    });
 });
