@@ -101,7 +101,7 @@
             "module": {
                 "arguments": [
                     {
-                        "index": "path:./controllers"
+                        "directory": "path:./controllers"
                     }
                 ]
             }
