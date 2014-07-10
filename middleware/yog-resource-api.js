@@ -1,6 +1,6 @@
 var fs = require('fs');
 var path = require('path');
-var idr = /^([\w0-9_\-]+):[^:\\\/]+$/i
+var idr = /^([\w0-9_\-]+):(?!(\/|\\))[^:]+$/i;
 var log;
 
 function ResourceApi(config_dir) {
