@@ -3,11 +3,11 @@
         "tpl": {
             "module": "yog-view",
             "renderer": {
-                "method": "create",
+                "method": "init",
                 "arguments": [
                     {
                         "cache": false,
-                        "engine": "swig"
+                        "engine": "yog-swig"
                     }
                 ]
             }

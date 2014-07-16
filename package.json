@@ -1,6 +1,6 @@
 {
   "name": "yog",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -27,6 +27,7 @@
     "yog-log": "0.0.5",
     "yog-bigpipe": "~0.0.1",
     "yog-view": "~0.0.3",
+    "yog-swig": "~0.0.7",
     "confit": "1.1.2",
     "caller": "0.0.1",
     "shortstop-handlers": "~1.0.0"
