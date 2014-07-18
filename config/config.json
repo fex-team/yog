@@ -96,6 +96,20 @@
             }
         },
 
+        "yogFeature": {
+            "enabled": false,
+            "priority": 130,
+            "module": {
+                "name" : "yog-feature",
+                "arguments": [
+                    {
+                        "config_dir": "path:./config",
+                        "feature_dir" : "path:./config/feature_extend" 
+                    }
+                ]
+            }
+        },
+
         "router": {
             "priority": 200,
             "module": {
