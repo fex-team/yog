@@ -6,7 +6,7 @@ An express-based Node.js web application bootstrapping module, extends kraken-js
 
 on Linux/Unix
 ```bash
-$ npm install fex-team/yog
+$ npm install yog
 ```
 
 on Windows
@@ -14,7 +14,7 @@ on Windows
 open a `cmd`
 
 ```bash
-npm install fex-team/yog
+npm install yog
 ```
 
 ### use
