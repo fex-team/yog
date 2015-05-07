@@ -27,7 +27,7 @@
     "yog-feature" : "~0.0.1",
     "yog-log": "~0.0.7",
     "yog-bigpipe": "~0.0.1",
-    "yog-view": "~0.1.4",
+    "yog-view": "~0.0.3",
     "yog-swig": "~0.1.0",
     "confit": "1.2.0",
     "caller": "1.0.0",
